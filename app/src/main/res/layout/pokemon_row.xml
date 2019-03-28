@@ -12,6 +12,8 @@
         android:layout_height="84dp"
         app:srcCompat="@drawable/pokeball" />
     <TextView
+        android:paddingLeft="15dp"
+        android:id="@+id/tv_pokemon_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="POKEMON NAME"/>
