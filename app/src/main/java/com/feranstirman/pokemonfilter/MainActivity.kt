@@ -25,20 +25,28 @@ class MainActivity : AppCompatActivity() {
             .build()
         val api = retrofit.create(GetPokemonService::class.java)
 
-        api.getAllPokemon().enqueue(object: Callback<PokemonList>{
-            override fun onResponse(call: Call<PokemonList>, response: Response<PokemonList>) {
-                val body = response.body()
-                val pokemonInfo = body?.pokemon
+        //va a buscar los pokemon del tipo que sale en el edittext
+        btn_buscar.setOnClickListener {
+            val tipoPokemon = et_tipo_pokemon.text.toString().toLowerCase().trim()
 
-                rv_main.adapter = MainAdapter(pokemonInfo!!)
+            api.getAllPokemon(tipoPokemon).enqueue(object: Callback<PokemonList>{
+                override fun onResponse(call: Call<PokemonList>, response: Response<PokemonList>) {
+                    val body = response.body()
+                    val pokemonInfo = body?.pokemon
 
-            }
+                    rv_main.adapter = MainAdapter(pokemonInfo!!,tipoPokemon)
 
-            override fun onFailure(call: Call<PokemonList>, t: Throwable) {
-                d("anstirman","something went wrong AAAAAAAA")
-            }
+                }
 
-        })
+                override fun onFailure(call: Call<PokemonList>, t: Throwable) {
+                    d("anstirman","something went wrong AAAAAAAA")
+                }
+
+            })
+
+        }
+
+
 
         rv_main.layoutManager = LinearLayoutManager(this)
 

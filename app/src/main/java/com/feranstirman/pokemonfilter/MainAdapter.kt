@@ -8,7 +8,7 @@ import com.feranstirman.pokemonfilter.Models.Pokemon
 import com.feranstirman.pokemonfilter.Models.PokemonInfo
 import kotlinx.android.synthetic.main.pokemon_row.view.*
 
-class MainAdapter(val pokemonList: List<PokemonInfo>): RecyclerView.Adapter<CustomViewHolder>(){
+class MainAdapter(val pokemonList: List<PokemonInfo>,val tipoPokemon:String): RecyclerView.Adapter<CustomViewHolder>(){
 
     override fun getItemCount(): Int {
         return pokemonList.count()
@@ -22,7 +22,8 @@ class MainAdapter(val pokemonList: List<PokemonInfo>): RecyclerView.Adapter<Cust
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val pokemon = pokemonList.get(position)
-        holder.itemView.tv_pokemon_name.text = pokemon.pokemon.name
+        holder.itemView.tv_pokemon_name.text = pokemon.pokemon.name.capitalize()
+        holder.itemView.tv_pokemon_type.text = tipoPokemon.capitalize()
 
     }
 
