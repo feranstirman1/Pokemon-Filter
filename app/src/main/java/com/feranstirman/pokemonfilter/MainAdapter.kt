@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.pokemon_row.view.*
 
 class MainAdapter: RecyclerView.Adapter<CustomViewHolder>(){
 
-    val pokemonNames = listOf<String>("charmander","squirtle","bulbasaur")
+    val pokemonNames = listOf<String>("charmander","squirtle","bulbasaur","charmander","squirtle","bulbasaur","charmander","squirtle","bulbasaur","charmander","squirtle","bulbasaur")
 
     override fun getItemCount(): Int {
         return pokemonNames.size
